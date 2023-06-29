@@ -14,11 +14,12 @@ export default defineNuxtConfig({
     'nuxt-gtag',
   ],
 
-  gtag: {
-    id: 'G-M1KERXTK1H', // TODO: Add your google analytics 4 tag here
-  },
+  // gtag: {
+  //   id: 'G-M1KERXTK1H', // TODO: Add your google analytics 4 tag here
+  // },
 
   nitro: {
+    preset: 'netlify',
     future: {
       nativeSWR: true,
     }
