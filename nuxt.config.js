@@ -18,6 +18,12 @@ export default defineNuxtConfig({
     id: 'G-M1KERXTK1H', // TODO: Add your google analytics 4 tag here
   },
 
+  nitro: {
+    future: {
+      nativeSWR: true,
+    }
+  },
+
   srcDir: './src',
 
   runtimeConfig: {
