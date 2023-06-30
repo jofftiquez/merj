@@ -2,18 +2,19 @@
   <div :data-theme="theme">
     <div class="navbar fixed bg-base-100 z-40 shadow-sm">
       <div class="navbar-start">
-        <a class="btn btn-ghost md:text-xl">Nuxtwind Daisy</a>
+        <a class="btn btn-ghost md:text-xl">Merj</a>
       </div>
       <div class="navbar-center hidden lg:flex">
         <!-- TODO: You can add menu here -->
       </div>
       <div class="navbar-end">
-        <select v-model="theme" class="select select-primary md:w-full md:max-w-xs">
-          <option disabled selected>Select Theme</option>
-          <option v-for="theme in themes" :value="theme" :key="theme">
-            <span class="uppercase">{{ theme }}</span>
-          </option>
-        </select>
+        <button
+          class="btn btn-circle"
+          @click="toggleTheme = !toggleTheme"
+        >
+          <i v-if="toggleTheme" class="las la-sun text-3xl"></i>
+          <i v-else class="las la-moon text-3xl"></i>
+        </button>
       </div>
     </div>
     <slot />
@@ -83,8 +84,19 @@ export default {
     });
     onMounted(() => {
       theme.value = localStorage.getItem('daisyui-theme') || 'dark';
+      toggleTheme.value = theme.value === 'dark';
+    });
+
+    const toggleTheme = ref(false);
+    watch(toggleTheme, (value) => {
+      if (value) {
+        theme.value = 'dark';
+      } else {
+        theme.value = 'light';
+      }
     });
     return {
+      toggleTheme,
       theme,
       themes: THEMES,
     };

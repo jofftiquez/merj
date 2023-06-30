@@ -19,10 +19,7 @@ export default defineNuxtConfig({
   // },
 
   nitro: {
-    preset: 'netlify',
-    future: {
-      nativeSWR: true,
-    }
+    preset: 'firebase',
   },
 
   srcDir: './src',
